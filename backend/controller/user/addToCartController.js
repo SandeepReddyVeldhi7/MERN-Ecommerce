@@ -1,4 +1,5 @@
-import  AddToCard  from "../../models/cartProduct.js";
+import AddToCard from "../../models/cartProduct.js";
+
 const addToCartController = async (req, res) => {
     try {
       const { productId } = req?.body;
@@ -9,7 +10,7 @@ const addToCartController = async (req, res) => {
         userId: currentUser,
       });
 
-      console.log("isProductAvailabl   ", isProductAvailable);
+      //console.log("isProductAvailabl   ", isProductAvailable);
 
       if (isProductAvailable) {
         return res.json({

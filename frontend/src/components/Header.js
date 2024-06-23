@@ -51,9 +51,13 @@ const Header = () => {
 
      if (value) {
        navigate(`/search?q=${value}`);
+     } else if (!value) {
+       
+       navigate("/")
      } else {
        navigate("/search");
      }
+   
   }
     return (
       <header

@@ -18,14 +18,14 @@ const addToCard = async(e,id) => {
 
     const responseData = await response.json()
 
-    if(responseData.success){
-        toast.success(responseData.message)
+    if (response.status === 401) {
+      toast.error("Please Login...");
+    } else if (responseData.success) {
+      toast.success(responseData.message);
+    } else {
+      toast.error(responseData.message);
     }
-
-    if(responseData.error){
-        toast.error(responseData.message)
-    }
-
+  
 
     return responseData
 }
