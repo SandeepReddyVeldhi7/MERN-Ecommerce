@@ -21,11 +21,14 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
          
   const fetchData = async () => {
     setLoading(true);
-    const categoryProduct = await fetchCategoryWiseProduct(category);
-    setLoading(false);
-
-   
-    setData(categoryProduct?.data);
+    try {
+      const categoryProduct = await fetchCategoryWiseProduct(category);
+      setData(categoryProduct?.data);
+    } catch (error) {
+      console.error("Error fetching category-wise products:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {

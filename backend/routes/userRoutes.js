@@ -42,7 +42,7 @@ router.post("/category-product", getCategoryWiseProduct);
 router.post("/product-details", getProductDetails);
 router.get("/search", searchProduct);
 router.get("/get-product", getProduct);
-
+           
 //user add to cart
 router.post("/addtocart", isAuthenticated, addToCartController)
 router.get("/countAddToCartProduct", isAuthenticated, countAddToCartProduct);

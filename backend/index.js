@@ -27,7 +27,8 @@ app.use(express.json())
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin:
+    "https://667846e9769ada9f6e58e0d0--harmonious-pudding-980fa4.netlify.app",
   credentials: true,
 };
 app.use(cors(corsOptions));

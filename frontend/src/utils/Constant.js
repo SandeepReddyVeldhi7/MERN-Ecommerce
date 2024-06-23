@@ -1,5 +1,6 @@
 
-const backend = process.env.REACT_APP_BACKEND_URL         //"http://localhost:8080";
+const backend =
+  "https://mern-ecommerce-git-main-sandeepreddys-projects.vercel.app/";
 const RegisterApi = {
   register: {
     url: `${backend}/api/register`,
