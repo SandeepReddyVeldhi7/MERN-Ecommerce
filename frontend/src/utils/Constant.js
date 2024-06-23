@@ -1,6 +1,5 @@
 
-const backend =
-  "https://mern-ecommerce-git-main-sandeepreddys-projects.vercel.app/";
+const backend = "https://mern-ecommerce-neon-eight.vercel.app";
 const RegisterApi = {
   register: {
     url: `${backend}/api/register`,
@@ -36,7 +35,7 @@ const RegisterApi = {
   },
   updateProduct: {
     url: `${backend}/api/update-product`,
-    method: "post",
+    method: "put",
   },
   deleteProduct: {
     url: `${backend}/api/delete-product`,

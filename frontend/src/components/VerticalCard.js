@@ -34,7 +34,7 @@ const VerticalCard = ({ loading, data = []  }) => {
               </div>
             );
           })
-        : data.map((product, index) => {
+        : data?.map((product, index) => {
             return (
               <Link
                 key={index}

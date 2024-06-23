@@ -57,7 +57,7 @@ const CategroyWiseProductDisplay = ({ category, heading }) => {
                 </div>
               );
             })
-          : data.map((product, index) => {
+          : data?.map((product, index) => {
               return (
                 <Link
                   to={"/product/" + product?._id}

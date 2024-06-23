@@ -8,7 +8,7 @@ import { allUser } from "../controller/user/allUser.js";
 import updateUser from "../controller/user/updateUser.js";
 import uploadProduct from "../controller/Product/uploadProduct.js"
 import updateProduct from "../controller/user/updateProduct.js";
-import getCategoryProduct from "../controller/Product/getCategoryProductOne.js";
+import getCategoryProduct from "../controller/Product/getCategoryProduct.js";
 import getCategoryWiseProduct from "../controller/Product/getCategoryWiseProduct.js";
 import addToCartController from "../controller/user/addToCartController.js";
 import getProductDetails from "../controller/Product/getProductDetails.js";

@@ -14,8 +14,10 @@ const CategoryList = () => {
       if (!response.ok) {
         throw new Error("Failed to fetch category products");
       }
+
       const dataResponse = await response.json();
-      setCategoryProduct(dataResponse.data);
+
+      setCategoryProduct(dataResponse?.data);
     } catch (error) {
       console.error("Error fetching category products:", error);
     } finally {

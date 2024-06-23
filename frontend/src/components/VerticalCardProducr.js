@@ -22,18 +22,21 @@ const VerticalCardProduct = ({ category, heading }) => {
     fetchUserAddToCart();
   };
 
-  const fetchData = async () => {
-    setLoading(true);
-    const categoryProduct = await fetchCategoryWiseProduct(category);
-    setLoading(false);
+ useEffect(() => {
+   const fetchData = async () => {
+     setLoading(true);
+     try {
+       const categoryProduct = await fetchCategoryWiseProduct(category);
+       setData(categoryProduct?.data || []); // Ensure data is set to an empty array if undefined
+     } catch (error) {
+       console.error("Error fetching category-wise products:", error);
+     } finally {
+       setLoading(false);
+     }
+   };
 
-    //console.log("horizontal data", categoryProduct.data);
-    setData(categoryProduct?.data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+   fetchData();
+ }, [category]);
 
   const scrollRight = () => {
     scrollElement.current.scrollLeft += 300;
@@ -80,7 +83,7 @@ const VerticalCardProduct = ({ category, heading }) => {
                 </div>
               );
             })
-          : data.map((product, index) => {
+          : data?.map((product, index) => {
               return (
                 <Link
                   key={product._id}

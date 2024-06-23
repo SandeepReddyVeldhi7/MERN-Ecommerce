@@ -15,6 +15,7 @@ function App() {
   const [cartProductCount, setCartProductCount] = useState(0);
   
   const fetchUserDetails = async () => {
+    try{
     const dataResponse = await fetch(RegisterApi.current_user.url, {
       method: RegisterApi.current_user.method,
       credentials: "include",
@@ -25,17 +26,26 @@ function App() {
      if (dataApi.success) {
        dispatch(setUserDetails(dataApi.user));
      }
-  }
-   const fetchUserAddToCart = async () => {
-     const dataResponse = await fetch(RegisterApi.addToCartProductCount.url, {
-       method: RegisterApi.addToCartProductCount.method,
-       credentials: "include",
-     });
+  }catch (error) {
+      console.error("Error fetching user details:", error);
+      // Handle error if necessary
+    }
+  };
+  const fetchUserAddToCart = async () => {
+    try {
+      const dataResponse = await fetch(RegisterApi.addToCartProductCount.url, {
+        method: RegisterApi.addToCartProductCount.method,
+        credentials: "include",
+      });
 
-     const dataApi = await dataResponse.json();
+      const dataApi = await dataResponse.json();
 
-     setCartProductCount(dataApi?.data?.count);
-   };
+      setCartProductCount(dataApi?.data?.count);
+    } catch (error) {
+      console.error("Error fetching cart product count:", error);
+      // Handle error if necessary
+    }
+  };
 
    useEffect(() => {
      /**user Details */
