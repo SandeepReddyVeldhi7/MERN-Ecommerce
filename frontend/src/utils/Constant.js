@@ -1,5 +1,5 @@
 
-const backend = "https://mern-ecommerce-neon-eight.vercel.app";
+const backend = "http://localhost:8080";
 const RegisterApi = {
   register: {
     url: `${backend}/api/register`,
