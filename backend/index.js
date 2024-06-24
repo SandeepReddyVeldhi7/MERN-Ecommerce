@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: FORNTEND_URL,
   credentials: true,
 };
 app.use(cors(corsOptions));
