@@ -4,32 +4,46 @@ import cors from "cors"
 import databaseConnection from "./config/dataBase.js";
 import userRoutes from "./routes/userRoutes.js";
 import cookieParser from "cookie-parser";
-import bodyParser from "body-parser";
 
 dotenv.config();
+ 
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL); // Debugging line
+
+
 const app = express();
 
+const frontendUrl = process.env.FRONTEND_URL;
+if (!frontendUrl) {
+  throw new Error("FRONTEND_URL environment variable is not defined");
+}
+
+const corsOptions = {
+  origin: frontendUrl.trim(),
+  credentials: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: "Content-Type,Authorization",
+};
+app.use(cors(corsOptions));
+
+// Handle preflight requests
+app.options('*', cors(corsOptions));
 
 // Connect to the database
 databaseConnection();
 
 // Configure body-parser to handle larger payloads
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json())
 app.use(cookieParser());
 
 
 
-const corsOptions = {
-  origin: FORNTEND_URL,
-  credentials: true,
-};
-app.use(cors(corsOptions));
-
 
 // Routes
-app.use("/api",userRoutes) 
+app.use("/api", userRoutes) 
+
+
 
 const PORT = 8080 || process.env.PORT ;
 
