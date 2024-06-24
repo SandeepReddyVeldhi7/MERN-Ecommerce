@@ -1,5 +1,5 @@
 
-const backend = "http://localhost:8080";
+const backend = process.env.REACT_APP_BACKEND_URL;
 const RegisterApi = {
   register: {
     url: `${backend}/api/register`,
