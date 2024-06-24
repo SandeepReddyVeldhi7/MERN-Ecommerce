@@ -89,7 +89,6 @@ const HorizontalCardProduct = ({category,heading}) => {
               return (
                 <Link
                   key={product._id}
-                
                   to={"product/" + product?._id}
                   className="w-full min-w-[280px] md:min-w-[320px] max-w-[280px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex"
                 >
@@ -115,7 +114,7 @@ const HorizontalCardProduct = ({category,heading}) => {
                       </p>
                     </div>
                     <button
-                      className="text-sm bg-red-600 hover:bg-red-700 text-white px-3 py-0.5 rounded-full"
+                      className="text-sm  bg-red-600 hover:bg-red-700 text-white w-[100px] py-0.5 rounded-sm "
                       onClick={(e) => handleAddToCart(e, product?._id)}
                     >
                       Add to Cart

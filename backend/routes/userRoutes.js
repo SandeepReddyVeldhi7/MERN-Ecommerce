@@ -32,7 +32,7 @@ router.get("/user-details", isAuthenticated, userDetails);
 router.get("/all-user", isAuthenticated, allUser);
 router.post("/update-user", isAuthenticated, updateUser);
 
-//admin access
+//admin access 
 router.put("/update-product", isAuthenticated, updateProduct);
 router.delete("/delete-product", isAuthenticated, deleteProduct);
 router.post("/add-products", isAuthenticated, uploadProduct);

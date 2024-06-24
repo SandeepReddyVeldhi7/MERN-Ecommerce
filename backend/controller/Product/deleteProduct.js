@@ -11,7 +11,7 @@ const deleteProduct = async (req, res) => {
     }
 
     const productId = req.body.productId;
-
+   console.log(" productId", productId);
     const deletedProduct = await Product.findByIdAndDelete(productId);
 
     if (!deletedProduct) {
