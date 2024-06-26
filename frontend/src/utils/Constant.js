@@ -15,7 +15,7 @@ const RegisterApi = {
   },
   current_user: {
     url: `${backend}/api/user-details`,
-    method: "get",
+    method: "get",   
   },
   allUser: {
     url: `${backend}/api/all-user`,

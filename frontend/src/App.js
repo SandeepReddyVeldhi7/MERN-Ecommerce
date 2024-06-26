@@ -14,22 +14,20 @@ function App() {
   const dispatch = useDispatch();
   const [cartProductCount, setCartProductCount] = useState(0);
   
-  const fetchUserDetails = async () => {
-    try{
+  const fetchUserDetails = async () => {   
+    
     const dataResponse = await fetch(RegisterApi.current_user.url, {
       method: RegisterApi.current_user.method,
       credentials: "include",
     });
 
     const dataApi = await dataResponse.json();
-  
+      console.log("dataApi", dataApi.data)
+      
      if (dataApi.success) {
-       dispatch(setUserDetails(dataApi.user));
+       dispatch(setUserDetails(dataApi.data));
      }
-  }catch (error) {
-      console.error("Error fetching user details:", error);
-      // Handle error if necessary
-    }
+ 
   };
   const fetchUserAddToCart = async () => {
     try {

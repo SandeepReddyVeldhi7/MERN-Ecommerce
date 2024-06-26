@@ -35,8 +35,8 @@ const Login = () => {
     e.preventDefault();
    // console.log("Form submitted");
 
-    try {
-      const res = await axios.post(RegisterApi.login.url, {
+    
+      const dataResponse = await axios.post(RegisterApi.login.url, {
         email: data.email,
         password: data.password,
       }, {
@@ -45,17 +45,18 @@ const Login = () => {
         },
         withCredentials: true
       });
-
+        const res = await dataResponse.json()
+     console.log("res",res)
       if (res.data.success) {
         toast.success(res.data.message);
         navigate("/")
-        fetchUserDetails()
-        fetchUserAddToCart()
+        fetchUserDetails();
+        fetchUserAddToCart();
        
       }
-    } catch (error) {
-      toast.success(error?.response?.data?.message || "An error occurred")
-      console.log(error);
+       if (res.data.error) {
+          toast.error(res.data.message);
+      
     }
   };
 
