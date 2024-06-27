@@ -20,6 +20,7 @@ function App() {
       method: RegisterApi.current_user.method,
       credentials: "include",
     });
+              
 
     const dataApi = await dataResponse.json();
       console.log("dataApi", dataApi.data)

@@ -76,7 +76,7 @@ const Header = () => {
               type="text"
               placeholder="search product here..... "
               className="w-full outline-none px-1 "
-              onChange={(handleSearch)}
+              onChange={handleSearch}
               value={search}
             />
             <div className="text-lg min-w-[50px]  h-8 bg-red-600  flex items-center  justify-center  rounded-r-full text-white">
@@ -86,14 +86,13 @@ const Header = () => {
 
           <div className="flex items-center gap-5">
             <div className="relative  flex justify-center">
-              {
-                user?._id && (
+              
+              {user?._id && (
                 <div
                   className="text-3xl cursor-pointer"
                   onClick={() => setMenuDisplay(!menuDisplay)}
                 >
-                  {
-                    user?.profilePic ? (
+                  {user?.profilePic ? (
                     <img
                       src={user?.profilePic}
                       className="w-10 h-10 rounded-full"
@@ -105,8 +104,7 @@ const Header = () => {
                 </div>
               )}
 
-              {
-                menuDisplay && (
+              {menuDisplay && (
                 <div className="absolute bottom-0 top-11 h-fit p-2 shadow-lg rounded">
                   <nav>
                     {user?.role === ROLE.ADMIN && (

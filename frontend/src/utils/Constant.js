@@ -13,7 +13,7 @@ const RegisterApi = {
     url: `${backend}/api/Logout`,
     method: "post",
   },
-  current_user: {
+  current_user: {    
     url: `${backend}/api/user-details`,
     method: "get",   
   },
