@@ -33,7 +33,7 @@ const Header = () => {
         withCredentials: true,
       }
       );
-
+          console.log("logout",res)
       if (res.data.success) {
         toast.success(res.data.message);
           dispatch(setUserDetails(null))

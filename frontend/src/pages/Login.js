@@ -8,9 +8,11 @@ import axios from "axios";
 import RegisterApi from "../utils/Constant.js";
 import toast from "react-hot-toast";
 import Context from "../context/index";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading]=useState(false)
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -33,31 +35,38 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   // console.log("Form submitted");
+    // console.log("Form submitted");
+    setLoading(true)
 
-    
-      const dataResponse = await axios.post(RegisterApi.login.url, {
-        email: data.email,
-        password: data.password,
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      });
-        const res = await dataResponse.json()
-     console.log("res",res)
-      if (res.data.success) {
-        toast.success(res.data.message);
-        navigate("/")
-        fetchUserDetails();
-        fetchUserAddToCart();
-       
-      }
-       if (res.data.error) {
-          toast.error(res.data.message);
-      
-    }
+     try {
+       const res = await axios.post(
+         RegisterApi.login.url,
+         {
+           email: data.email,
+           password: data.password,
+         },
+         {
+           headers: {
+             "Content-Type": "application/json",
+           },
+           withCredentials: true,
+         }
+       );
+
+       if (res.data.success) {
+         toast.success(res.data.message);
+         navigate("/");
+         fetchUserDetails();
+         fetchUserAddToCart();
+       } else if (res.data.error) {
+         toast.error(res.data.message);
+       }
+     } catch (error) {
+       console.error("Error during login:", error);
+       toast.error("An error occurred during login. Please try again.");
+     } finally {
+       setLoading(false)
+     }
   };
 
   return (
@@ -110,8 +119,12 @@ const Login = () => {
               </Link>
             </div>
 
-            <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6">
-              Login
+            <button
+              type="submit"
+              className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6"
+              disabled={loading}
+            >
+              {loading ? <ClipLoader size={24} color={"#ffffff"} /> : "Login"}
             </button>
           </form>
 
